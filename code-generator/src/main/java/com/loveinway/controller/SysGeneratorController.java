@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.loveinway.form.CodeGenForm;
 import com.loveinway.service.SysGeneratorService;
 import com.loveinway.utils.PageUtils;
 import com.loveinway.utils.Query;
@@ -44,11 +45,11 @@ public class SysGeneratorController {
 	 * 生成代码
 	 */
 	@RequestMapping("/code")
-	public void code(String tables, HttpServletResponse response) throws IOException{
-		byte[] data = sysGeneratorService.generatorCode(tables.split(","));
+	public void code(CodeGenForm form, HttpServletResponse response) throws IOException{
+		byte[] data = sysGeneratorService.generatorCode(form.getTables().split(","));
 		
 		response.reset();  
-        response.setHeader("Content-Disposition", "attachment; filename=\"renren.zip\"");  
+        response.setHeader("Content-Disposition", "attachment; filename=\"code.zip\"");  
         response.addHeader("Content-Length", "" + data.length);  
         response.setContentType("application/octet-stream; charset=UTF-8");  
   

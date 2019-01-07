@@ -13,7 +13,6 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-
 package com.loveinway.utils;
 
 import org.apache.commons.configuration.Configuration;
@@ -53,9 +52,10 @@ public class GenUtils {
 		templates.add("template/Service.java.vm");
 		templates.add("template/ServiceImpl.java.vm");
 		templates.add("template/Controller.java.vm");
-		templates.add("template/list.html.vm");
-		templates.add("template/list.js.vm");
-		templates.add("template/menu.sql.vm");
+		
+		//templates.add("template/list.html.vm");
+		//templates.add("template/list.js.vm");
+		//templates.add("template/menu.sql.vm");
 		return templates;
 	}
 	
@@ -155,7 +155,6 @@ public class GenUtils {
 			}
 		}
 	}
-	
 	
 	/**
 	 * 列名转换成Java属性名
