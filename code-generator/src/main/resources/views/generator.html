@@ -26,13 +26,13 @@
 		<a class="btn btn-default" @click="query">查询</a>
 		<a class="btn btn-primary" @click="generator"><i class="fa fa-file-code-o"></i>&nbsp;生成代码</a>
 	</div>
-	<div class="grid-btn">
-		<div class="form-group col-sm-2">
-			<input type="text" class="form-control" v-model="q.mainPath" placeholder="主目录">
-			<input type="text" class="form-control" v-model="q.moduleName" placeholder="模块名">
-			<input type="text" class="form-control" v-model="q.packageName" placeholder="包名">
-		</div>	
+	<br>
+	<div>
+		<input type="text" class="form-control" v-model="q.mainPath" placeholder="主目录" style="width: 200px;"><br>
+		<input type="text" class="form-control" v-model="q.moduleName" placeholder="模块名" style="width: 200px;"><br>
+		<input type="text" class="form-control" v-model="q.packageName" placeholder="包名" style="width: 200px;"><br>
 	</div>
+	<br>
     <table id="jqGrid"></table>
     <div id="jqGridPager"></div>
 </div>
