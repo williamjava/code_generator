@@ -11,4 +11,10 @@ public class CodeGenForm implements Serializable{
 	private String tables;
 	
 	private String path;
+	
+	private String mainPath;
+	
+	private String packageName;
+	
+	private String moduleName;
 }

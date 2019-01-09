@@ -64,8 +64,13 @@ public class GenUtils {
 	 */
 	public static void generatorCode(Map<String, String> table,
 			List<Map<String, String>> columns, ZipOutputStream zip){
-		//配置信息
+		generatorCode(null, null, null, table, columns, zip);
+	}
+	
+	public static void generatorCode(String mainPath, String moduleName, String packageName,Map<String, String> table,
+			List<Map<String, String>> columns, ZipOutputStream zip){
 		Configuration config = getConfig();
+		
 		boolean hasBigDecimal = false;
 		//表信息
 		TableEntity tableEntity = new TableEntity();
@@ -114,9 +119,6 @@ public class GenUtils {
 		Properties prop = new Properties();  
 		prop.put("file.resource.loader.class", "org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader");  
 		Velocity.init(prop);
-
-		String mainPath = config.getString("mainPath" );
-		mainPath = StringUtils.isBlank(mainPath) ? "io.renren" : mainPath;
 		
 		//封装模板数据
 		Map<String, Object> map = new HashMap<>();
@@ -128,9 +130,9 @@ public class GenUtils {
 		map.put("pathName", tableEntity.getClassname().toLowerCase());
 		map.put("columns", tableEntity.getColumns());
 		map.put("hasBigDecimal", hasBigDecimal);
-		map.put("mainPath", mainPath);
-		map.put("package", config.getString("package" ));
-		map.put("moduleName", config.getString("moduleName" ));
+		map.put("mainPath", mainPath == null ? config.getString("mainPath") : mainPath);
+		map.put("package", packageName == null ? config.getString("package" ) : packageName);
+		map.put("moduleName", moduleName == null ? config.getString("moduleName" ) : moduleName);
 		map.put("author", config.getString("author"));
 		map.put("email", config.getString("email"));
 		map.put("datetime", DateUtils.format(new Date(), DateUtils.DATE_TIME_PATTERN));

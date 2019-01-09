@@ -3,6 +3,7 @@ package com.loveinway.service;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.loveinway.dao.GeneratorDao;
+import com.loveinway.form.CodeGenForm;
 import com.loveinway.utils.GenUtils;
 import com.loveinway.utils.PageUtils;
 import com.loveinway.utils.Query;
@@ -32,7 +33,7 @@ public class SysGeneratorService {
 		Page<?> page = PageHelper.startPage(query.getPage(), query.getLimit());
 		List<Map<String, Object>> list = generatorDao.queryList(query);
 
-		return new PageUtils(list, (int)page.getTotal(), query.getLimit(), query.getPage());
+		return new PageUtils(list, (int) page.getTotal(), query.getLimit(), query.getPage());
 	}
 
 	public Map<String, String> queryTable(String tableName) {
@@ -47,15 +48,35 @@ public class SysGeneratorService {
 		ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 		ZipOutputStream zip = new ZipOutputStream(outputStream);
 
-		for(String tableName : tableNames){
-			//查询表信息
+		for (String tableName : tableNames) {
+			// 查询表信息
 			Map<String, String> table = queryTable(tableName);
-			//查询列信息
+			// 查询列信息
 			List<Map<String, String>> columns = queryColumns(tableName);
-			//生成代码
+			// 生成代码
 			GenUtils.generatorCode(table, columns, zip);
 		}
 		IOUtils.closeQuietly(zip);
+		return outputStream.toByteArray();
+	}
+
+	public byte[] generatorCode(CodeGenForm form) {
+		String[] tableNames = form.getTables().split(",");
+
+		ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+		ZipOutputStream zip = new ZipOutputStream(outputStream);
+
+		for (String tableName : tableNames) {
+			// 查询表信息
+			Map<String, String> table = queryTable(tableName);
+			// 查询列信息
+			List<Map<String, String>> columns = queryColumns(tableName);
+			// 生成代码
+			GenUtils.generatorCode(form.getMainPath(), form.getModuleName(), form.getPackageName(), table, columns,
+					zip);
+		}
+		IOUtils.closeQuietly(zip);
+
 		return outputStream.toByteArray();
 	}
 }

@@ -39,7 +39,10 @@ var vm = new Vue({
 	el:'#rrapp',
 	data:{
 		q:{
-			tableName: null
+			tableName: null,
+			mainPath: null,
+			moduleName: null,
+			packageName: null
 		}
 	},
 	methods: {

@@ -46,7 +46,7 @@ public class SysGeneratorController {
 	 */
 	@RequestMapping("/code")
 	public void code(CodeGenForm form, HttpServletResponse response) throws IOException{
-		byte[] data = sysGeneratorService.generatorCode(form.getTables().split(","));
+		byte[] data = sysGeneratorService.generatorCode(form);
 		
 		response.reset();  
         response.setHeader("Content-Disposition", "attachment; filename=\"code.zip\"");  
