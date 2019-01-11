@@ -1,12 +1,12 @@
-package com.loveinway.service;
+package com.code.service;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
-import com.loveinway.dao.GeneratorDao;
-import com.loveinway.form.CodeGenForm;
-import com.loveinway.utils.GenUtils;
-import com.loveinway.utils.PageUtils;
-import com.loveinway.utils.Query;
+import com.code.dao.GeneratorDao;
+import com.code.form.CodeGenForm;
+import com.code.utils.GenUtils;
+import com.code.utils.PageUtils;
+import com.code.utils.Query;
 
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,9 +20,9 @@ import java.util.zip.ZipOutputStream;
 /**
  * 代码生成器
  * 
- * @author chenshun
- * @email sunlightcs@gmail.com
- * @date 2016年12月19日 下午3:33:38
+ * @author william
+ * @email wuhoujian@126.com
+ * @date 2019/1/11
  */
 @Service
 public class SysGeneratorService {

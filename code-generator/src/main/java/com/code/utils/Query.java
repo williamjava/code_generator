@@ -1,4 +1,4 @@
-package com.loveinway.utils;
+package com.code.utils;
 
 
 import java.util.LinkedHashMap;
@@ -7,9 +7,9 @@ import java.util.Map;
 /**
  * 查询参数
  *
- * @author chenshun
- * @email sunlightcs@gmail.com
- * @date 2017-03-14 23:15
+ * @author william
+ * @email wuhoujian@126.com
+ * @date 2019/1/11
  */
 public class Query extends LinkedHashMap<String, Object> {
 	private static final long serialVersionUID = 1L;

@@ -1,13 +1,13 @@
-package com.loveinway.entity;
+package com.code.entity;
 
 import java.util.List;
 
 /**
  * 表数据
  * 
- * @author chenshun
- * @email sunlightcs@gmail.com
- * @date 2016年12月20日 上午12:02:55
+ * @author william
+ * @email wuhoujian@126.com
+ * @date 2019/1/11
  */
 public class TableEntity {
 	//表的名称

@@ -1,4 +1,4 @@
-package com.loveinway.controller;
+package com.code.controller;
 
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,11 +7,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.loveinway.form.CodeGenForm;
-import com.loveinway.service.SysGeneratorService;
-import com.loveinway.utils.PageUtils;
-import com.loveinway.utils.Query;
-import com.loveinway.utils.R;
+import com.code.form.CodeGenForm;
+import com.code.service.SysGeneratorService;
+import com.code.utils.PageUtils;
+import com.code.utils.Query;
+import com.code.utils.Result;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -20,9 +20,9 @@ import java.util.Map;
 /**
  * 代码生成器
  * 
- * @author chenshun
- * @email sunlightcs@gmail.com
- * @date 2016年12月19日 下午9:12:58
+ * @author william
+ * @email wuhoujian@126.com
+ * @date 2019/1/11
  */
 @Controller
 @RequestMapping("/sys/generator")
@@ -35,10 +35,10 @@ public class SysGeneratorController {
 	 */
 	@ResponseBody
 	@RequestMapping("/list")
-	public R list(@RequestParam Map<String, Object> params){
+	public Result list(@RequestParam Map<String, Object> params){
 		PageUtils pageUtil = sysGeneratorService.queryList(new Query(params));
 		
-		return R.ok().put("page", pageUtil);
+		return Result.ok().put("page", pageUtil);
 	}
 	
 	/**

@@ -1,4 +1,4 @@
-package com.loveinway.utils;
+package com.code.utils;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,20 +8,20 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 /**
  * 异常处理器
  * 
- * @author chenshun
- * @email sunlightcs@gmail.com
- * @date 2016年10月27日 下午10:16:19
+ * @author william
+ * @email wuhoujian@126.com
+ * @date 2019/1/11
  */
 @RestControllerAdvice
-public class RRExceptionHandler {
+public class CustomExceptionHandler {
 	private Logger logger = LoggerFactory.getLogger(getClass());
 
 	/**
 	 * 处理自定义异常
 	 */
-	@ExceptionHandler(RRException.class)
-	public R handleRRException(RRException e){
-		R r = new R();
+	@ExceptionHandler(CustomException.class)
+	public Result handleRRException(CustomException e){
+		Result r = new Result();
 		r.put("code", e.getCode());
 		r.put("msg", e.getMessage());
 
@@ -29,8 +29,8 @@ public class RRExceptionHandler {
 	}
 
 	@ExceptionHandler(Exception.class)
-	public R handleException(Exception e){
+	public Result handleException(Exception e){
 		logger.error(e.getMessage(), e);
-		return R.error();
+		return Result.error();
 	}
 }

@@ -1,20 +1,4 @@
-/**
- * Copyright 2018 智能收银 http://www.loveinway.com
- * <p>
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not
- * use this file except in compliance with the License. You may obtain a copy of
- * the License at
- * <p>
- * http://www.apache.org/licenses/LICENSE-2.0
- * <p>
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
- * License for the specific language governing permissions and limitations under
- * the License.
- */
-
-package com.loveinway.config;
+package com.code.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -22,19 +6,21 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 
-import com.loveinway.dao.*;
-import com.loveinway.utils.RRException;
+import com.code.dao.*;
+import com.code.utils.CustomException;
 
 /**
  * 数据库配置
  *
- * @author
- * @since 2018-07-24
+ * @author william
+ * @email wuhoujian@126.com
+ * @date 2019/1/11
  */
 @Configuration
 public class DbConfig {
-    @Value("${loveinway.database: mysql}")
+    @Value("${code.database: mysql}")
     private String database;
+    
     @Autowired
     private MySQLGeneratorDao mySQLGeneratorDao;
     @Autowired
@@ -56,7 +42,7 @@ public class DbConfig {
         }else if("postgresql".equalsIgnoreCase(database)){
             return postgreSQLGeneratorDao;
         }else {
-            throw new RRException("不支持当前数据库：" + database);
+            throw new CustomException("不支持当前数据库：" + database);
         }
     }
 }

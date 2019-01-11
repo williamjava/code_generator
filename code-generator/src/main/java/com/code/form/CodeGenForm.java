@@ -1,4 +1,4 @@
-package com.loveinway.form;
+package com.code.form;
 
 import java.io.Serializable;
 

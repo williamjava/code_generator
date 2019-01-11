@@ -1,19 +1,4 @@
-/**
- * Copyright 2018 智能收银 http://www.loveinway.com
- * <p>
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not
- * use this file except in compliance with the License. You may obtain a copy of
- * the License at
- * <p>
- * http://www.apache.org/licenses/LICENSE-2.0
- * <p>
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
- * License for the specific language governing permissions and limitations under
- * the License.
- */
-package com.loveinway.utils;
+package com.code.utils;
 
 import org.apache.commons.configuration.Configuration;
 import org.apache.commons.configuration.ConfigurationException;
@@ -25,8 +10,8 @@ import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.Velocity;
 
-import com.loveinway.entity.ColumnEntity;
-import com.loveinway.entity.TableEntity;
+import com.code.entity.ColumnEntity;
+import com.code.entity.TableEntity;
 
 import java.io.File;
 import java.io.IOException;
@@ -38,17 +23,17 @@ import java.util.zip.ZipOutputStream;
 /**
  * 代码生成器 工具类
  * 
- * @author chenshun
- * @email sunlightcs@gmail.com
- * @date 2016年12月19日 下午11:40:24
+ * @author william
+ * @email wuhoujian@126.com
+ * @date 2019/1/11
  */
 public class GenUtils {
 
 	public static List<String> getTemplates() {
 		List<String> templates = new ArrayList<String>();
 		templates.add("template/Entity.java.vm");
-		templates.add("template/Dao.java.vm");
-		templates.add("template/Dao.xml.vm");
+		templates.add("template/Mapper.java.vm");
+		templates.add("template/Mapper.xml.vm");
 		templates.add("template/Service.java.vm");
 		templates.add("template/ServiceImpl.java.vm");
 		templates.add("template/Controller.java.vm");
@@ -155,7 +140,7 @@ public class GenUtils {
 				IOUtils.closeQuietly(sw);
 				zip.closeEntry();
 			} catch (IOException e) {
-				throw new RRException("渲染模板失败，表名：" + tableEntity.getTableName(), e);
+				throw new CustomException("渲染模板失败，表名：" + tableEntity.getTableName(), e);
 			}
 		}
 	}
@@ -184,7 +169,7 @@ public class GenUtils {
 		try {
 			return new PropertiesConfiguration("generator.properties");
 		} catch (ConfigurationException e) {
-			throw new RRException("获取配置文件失败，", e);
+			throw new CustomException("获取配置文件失败，", e);
 		}
 	}
 
@@ -201,8 +186,8 @@ public class GenUtils {
 			return packagePath + "entity" + File.separator + className + ".java";
 		}
 
-		if (template.contains("Dao.java.vm")) {
-			return packagePath + "dao" + File.separator + className + "Mapper.java";
+		if (template.contains("Mapper.java.vm")) {
+			return packagePath + "mapper" + File.separator + className + "Mapper.java";
 		}
 
 		if (template.contains("Service.java.vm")) {
@@ -217,7 +202,7 @@ public class GenUtils {
 			return packagePath + "controller" + File.separator + className + "Controller.java";
 		}
 
-		if (template.contains("Dao.xml.vm")) {
+		if (template.contains("Mapper.xml.vm")) {
 			return "main" + File.separator + "resources" + File.separator + "mapper" + File.separator + moduleName
 					+ File.separator + className + "Mapper.xml";
 		}

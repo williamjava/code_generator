@@ -1,4 +1,4 @@
-package com.loveinway.utils;
+package com.code.utils;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -6,9 +6,9 @@ import java.util.Date;
 /**
  * 日期处理
  * 
- * @author chenshun
- * @email sunlightcs@gmail.com
- * @date 2016年12月21日 下午12:53:33
+ * @author william
+ * @email wuhoujian@126.com
+ * @date 2019/1/11
  */
 public class DateUtils {
 	/** 时间格式(yyyy-MM-dd) */

@@ -8,7 +8,7 @@ import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import ${mainPath}.common.utils.PageUtils;
 import ${mainPath}.common.utils.Query;
 
-import ${package}.dao.${className}Mapper;
+import ${package}.mapper.${className}Mapper;
 import ${package}.entity.${className};
 import ${package}.service.${className}Service;
 
