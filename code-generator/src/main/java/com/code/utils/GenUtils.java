@@ -28,16 +28,19 @@ import java.util.zip.ZipOutputStream;
  * @date 2019/1/11
  */
 public class GenUtils {
-
+	/**
+	 * 获取模板列表，根据项目需要选择对应的模板
+	 * @return
+	 */
 	public static List<String> getTemplates() {
 		List<String> templates = new ArrayList<String>();
 		templates.add("template/Entity.java.vm");
 		templates.add("template/Mapper.java.vm");
 		templates.add("template/Mapper.xml.vm");
-		templates.add("template/Service.java.vm");
-		templates.add("template/ServiceImpl.java.vm");
-		templates.add("template/Controller.java.vm");
 
+		//templates.add("template/Service.java.vm");
+		//templates.add("template/ServiceImpl.java.vm");
+		//templates.add("template/Controller.java.vm");
 		// templates.add("template/list.html.vm");
 		// templates.add("template/list.js.vm");
 		// templates.add("template/menu.sql.vm");
